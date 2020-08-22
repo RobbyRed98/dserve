@@ -33,9 +33,9 @@ jobs:
       run: |
         sudo apt install tree -y
         tree .
-        zip linux.zip dist/dserve_v*linux*.zip
-        zip windows.zip dist/dserve_v*windows*.zip
-        zip freebsd.zip dist/dserve_v*freebsd*.zip
+        zip -r linux.zip dist/dserve_v*linux*.zip
+        zip -r windows.zip dist/dserve_v*windows*.zip
+        zip -r freebsd.zip dist/dserve_v*freebsd*.zip
 
     # Runs a set of commands using the runners shell
     - uses: actions/upload-artifact@v2
