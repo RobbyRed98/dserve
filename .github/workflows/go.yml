@@ -30,7 +30,7 @@ jobs:
         # Arguments to pass to GoReleaser
         args: goreleaser release --skip-publish --snapshot --rm-dist
     - name: Remove dist
-      run: rm -rf $(ls | find dist -maxdepth 1 -type d -printf '%f\n') || rm dist/config.yaml
+      run: cd dist && rm -rf $(ls | find . -maxdepth 1 -type d -printf '%f\n') || rm dist/config.yaml
 
     # Runs a set of commands using the runners shell
     - uses: actions/upload-artifact@v2
