@@ -60,7 +60,7 @@ func FileRequestHandleFunc(file string) func(http.ResponseWriter, *http.Request)
 func main() {
 	host := flag.String("ip", "localhost", "The host address to run dserve on.")
 	port := flag.Int("port", 8080, "The port to run dserve on.")
-	path := flag.String("dir", os.Args[0], "The directories path to host.")
+	path := flag.String("dir", ".", "The directories path to host.")
 	flag.Parse()
 
 	log.Println("Starting traffic light controller service...")
