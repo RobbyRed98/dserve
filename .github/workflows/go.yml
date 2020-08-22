@@ -34,6 +34,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: artifact
-        path: |
-          dist/*.zip
-          dist/*.deb
+        path: dist/*[.zip]?[.deb]
