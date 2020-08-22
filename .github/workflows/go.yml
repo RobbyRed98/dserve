@@ -31,6 +31,8 @@ jobs:
         args: goreleaser release --skip-publish --snapshot --rm-dist
     - name: Prepack artifact
       run: |
+        sudo apt install tree -y
+        tree .
         zip linux.zip dist/dserve_v*linux*.zip
         zip windows.zip dist/dserve_v*windows*.zip
         zip freebsd.zip dist/dserve_v*freebsd*.zip
