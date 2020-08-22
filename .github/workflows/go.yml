@@ -29,19 +29,13 @@ jobs:
       with:
         # Arguments to pass to GoReleaser
         args: goreleaser release --skip-publish --snapshot --rm-dist
-    - name: Prepack artifact
+    - name: Remove dist
       run: |
-        sudo apt install tree -y
-        tree .
-        zip -r linux.zip dist/dserve_v*linux*.zip
-        zip -r windows.zip dist/dserve_v*windows*.zip
-        zip -r freebsd.zip dist/dserve_v*freebsd*.zip
+        rm -rf $(ls | find . -maxdepth 1 -type d -printf '%f\n')
+        rm config.yaml
 
     # Runs a set of commands using the runners shell
     - uses: actions/upload-artifact@v2
       with:
         name: artifact
-        path: |
-          linux.zip
-          windows.zip
-          freebsd.zip
+        path: dist/*
