@@ -1,0 +1,35 @@
+# This is an example goreleaser.yaml file with some sane defaults.
+# Make sure to check the documentation at http://goreleaser.com
+project_name: dserve
+
+before:
+  hooks:
+    - go mod download
+archives:
+  -
+    format: zip
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - freebsd
+    goarch:
+      - amd64
+      - arm
+      - arm64
+      - 386
+    goarm:
+      - 6
+      - 7
+    ignore:
+      - goos: freebsd
+        goarch: arm64
+
+nfpms:
+  -
+    maintainer: Robin Roth <roth-robin@web.de>
+    formats:
+      - deb
